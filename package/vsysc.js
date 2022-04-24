@@ -2,7 +2,7 @@
  * ----------- vsystem container language -----------
  * description: vsystem container language (vsysc) is a simple assembly language that can be used to control systems on https://vsys.oxvs.net.
  * These systems a quick and simple language that can be used to control the system. Instructions in vsysc are executed line by line.
- * All reserved names must be only 2 characters long.
+ * All reserved names should be only 2 characters long, but it is not required.
  * 
  * Reserved names:
  * - nm: name
