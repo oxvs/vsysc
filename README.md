@@ -11,8 +11,9 @@ All reserved names should be only 2 characters long, but it is not required.
 - ar: create array
 - ad: add to array
 - rm: remove from array
-- im: import a file and run it (basically a function), an imported file will have access to `000#` variables, which are supplied parameters
+- im: import a file and run it (basically a function), an imported file will have access to `OUT_#` variables, which are supplied parameters
 - ex: export a file, should be used when you want the file to be imported by another file as a function
+- rt: return a value
 
 ## Syntax
 `(int): (string): (string)`

@@ -11,8 +11,9 @@
  * - ar: create array
  * - ad: add to array
  * - rm: remove from array
- * - im: import a file and run it (basically using functions), an imported file will have access to 000 variables, which are supplied parameters
+ * - im: import a file and run it (basically using functions), an imported file will have access to OUT_ variables, which are supplied parameters
  * - ex: export a file, should be used when you want the file to be imported by another file as a function
+ * - rt: return a value
  * 
  * Syntax:
  * (int): (string): (string)
@@ -178,6 +179,8 @@ vsysc.parseToJSON = function (vsyscString, variableStore = vsysc.globalVariables
                             variableStore[identifier.toString()] = content.toString()
                         } else if (name === "nm") {
                             object.name = content.toString()
+                        } else if (name === "rt") { // return
+                            variableStore["RT_" + identifier.toString()] = content.toString()
                         } else if (!vsysc.customKeywords[name]) { // it doesn't exist in normal keywords, and it is not a custom keyword
                             // instead of rejecting, just add it to object.content as an error
                             if (name !== "ex" && name !== "im") {
@@ -187,6 +190,8 @@ vsysc.parseToJSON = function (vsyscString, variableStore = vsysc.globalVariables
                                     keyword: name 
                                 }
                             }
+                        } else {
+                            vsysc.customKeywords[name]()
                         }
                     }
                 })
@@ -288,7 +293,7 @@ vsysc.parse = function (content) {
                             let str = ""
                             // for each element after element.value.split(/,\s*/g)[0], add "000{i}: DC: {element}\n" to str
                             for (let i = 1; i < element.value.split(/,\s*/g).length; i++) {
-                                str += `\n000${i}: DC: ${element.value.split(/,\s*/g)[i]}` // add parameters by creating variables in the file
+                                str += `\nOUT_${i}: DC: ${element.value.split(/,\s*/g)[i]}` // add parameters by creating variables in the file
                             }
 
                             // get object

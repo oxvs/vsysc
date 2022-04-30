@@ -25,7 +25,7 @@
         const output = document.getElementById("text2")
 
         // when the file input changes do window.vsfdl.fileToVSFDL(file)
-        document.addEventListener('keypress', function (e) {
+        setInterval(() => {
             window.vsysc.parseToJSON(input.value).then((data) => {
                 output.value = JSON.stringify(data)
                 window.vsysc.parse(input.value).then((data) => {
@@ -34,7 +34,7 @@
                     output.value += `\n\n===================================\n\n${JSON.stringify(err)}`
                 })
             }).catch((err) => reject(err))
-        })
+        }, 10);
     </script>
 </body>
 
