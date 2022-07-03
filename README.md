@@ -38,4 +38,4 @@ Arrays can be created by using the ar command. Adding to an array uses the same 
 
 ## Note
 
-vsysc is not a full language for completing tasks, and it only used for storing data and processing it at the moment. It is not possible to use proper functions or other usual program tasks without using custom keywords for the language.
+vsysc is not a full language for completing tasks, and it is only used for storing data and processing it at the moment. It is not possible to use proper functions or other usual program tasks without using custom keywords for the language.
